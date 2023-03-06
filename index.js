@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', init)
 
+
+////// BRIAN
 function init() {
     // const spirits = ['vodka', 'rum', 'tequila']
 
+  
     //fetch spirits and iterate into renderSpirits
     spirits.forEach(renderSpirits)
 
@@ -18,7 +21,7 @@ function init() {
 
 }//end init
 
-
+//// DIANA  & css grid
 function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
     const span = document.createElement('span')
@@ -43,7 +46,7 @@ function renderDrinksList(drinksBySpirit) {
 }  // end renderDrinksList
 
 
-
+////JOSHUA
 function drinkDetails(drink) {
 
     //run a fetch based on the ID and pull picture, ingredients, steps
