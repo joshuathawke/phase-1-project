@@ -1,0 +1,4 @@
+document.addEventListener('click', () => {
+    function 
+}
+)
