@@ -1,27 +1,58 @@
 document.addEventListener('DOMContentLoaded', init)
 
-function init () {
-const spirits = ['vodka', 'rum', 'tequila']
+function init() {
+    // const spirits = ['vodka', 'rum', 'tequila']
 
-spirits.forEach(renderSpirits)
+    //fetch spirits and iterate into renderSpirits
+    spirits.forEach(renderSpirits)
+
+
+    function searchDrink() {
+
+        // setup a form to take the search > create the url for the search  > fetch that search
+
+        // to each list item add event listener to pass it to renderDrinksList
+
+    } //end searchDrink
+
+
 }//end init
-  
 
-function renderSpirits (spirit){
- const bar = document.querySelector('#alcohol-bar')
+
+function renderSpirits(spirit) {
+    const bar = document.querySelector('#alcohol-bar')
     const span = document.createElement('span')
     span.innerText = spirit
-    span.addEventListener('click', () => { 
-     console.log(span.innerText)})
+    span.addEventListener('click', () => {
+        // take spirit create the url for fetching the list of drink with that spirit   
+        //mouseover event over each spirit to change color / bold /whatever    
 
-bar.append(span)
+        // pass fetch results (set of objects) pass it thorough renderDrinksList
+    })
+
+    bar.append(span)
+
+} //end renderSpirits
+
+function renderDrinksList(drinksBySpirit) {
+
+    //iterate and inserts list into list to be rendered in the div
+
+    // to each list item add event listener to pass it to drinkDetails
+
+}  // end renderDrinksList
 
 
-    }
-   
-    
-    
-  
+
+function drinkDetails(drink) {
+
+    //run a fetch based on the ID and pull picture, ingredients, steps
+
+    //render in the div
+
+
+
+} //end drinkDetails
 
 
 
@@ -29,7 +60,10 @@ bar.append(span)
 
 
 
- 
+
+
+
+
 
 
 
