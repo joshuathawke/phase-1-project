@@ -56,7 +56,17 @@ function renderDrinksList(drinksBySpirit) {
 function drinkDetails(drink) {
 
     //run a fetch based on the ID and pull picture, ingredients, steps
-
+    fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${'idDrink'}`)
+    .then(resp => resp.json())
+    .then(drinkDetails => {
+        const detailsInfo = document.getElementById('details-info')
+        detailsInfo.innerText = `
+        <h2>${drink.name}</h2>
+        <h2>${drink.ingredients}</h2>
+        <h2>${drink.instructions}</h2>
+        <h2>${drink.glass}</h2>`
+    })
+    render.drinkDetails()
     //render in the div
 
 
