@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', init)
 
 ////// BRIAN
 function init() {
-    // const spirits = ['vodka', 'rum', 'tequila']
 
-  
+
+
     //fetch spirits and iterate into renderSpirits
-    spirits.forEach(renderSpirits)
+    spirits.liquors.forEach(renderSpirits)
 
 
     function searchDrink() {
@@ -25,30 +25,38 @@ function init() {
 function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
     const span = document.createElement('span')
-    span.innerText = spirit
+    span.innerText = spirit.name
+    bar.append(span)
+
+    // add eventlistener to populate a list of drinks per spirit & pass list iteratively to renderDrinksList
     span.addEventListener('click', () => {
 
-fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit.name}`)
-.then((resp)=> resp.json())
-.then(data=> data.forEach(renderDrinksList))
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit.name}`)
+            .then((resp) => resp.json())
+            .then(renderDrinksList)
+    }) //end event listener
 
 
-        // take spirit create the url for fetching the list of drink with that spirit   
-        //mouseover event over each spirit to change color / bold /whatever    
-
-        // pass fetch results (set of objects) pass it thorough renderDrinksList
-    })
-
-    bar.append(span)
+    //mouseover event over each spirit to change color / bold /whatever    
 
 } //end renderSpirits
 
 function renderDrinksList(drinksBySpirit) {
+    const ul = document.querySelector('#list')
+    ul.innerHTML = ''
 
-    //iterate and inserts list into list to be rendered in the div
+    drinksBySpirit.drinks.forEach(drink => {
+        const li = document.createElement('li')
+        li.innerText = drink.strDrink
+        ul.append(li)
 
-    // to each list item add event listener to pass it to drinkDetails
+        li.addEventListener('click', () => {
+            fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`)
+                .then((resp) => resp.json())
+                .then(drinkDetails)
+        })
 
+    })
 }  // end renderDrinksList
 
 
