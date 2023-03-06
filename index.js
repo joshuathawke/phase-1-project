@@ -27,6 +27,12 @@ function renderSpirits(spirit) {
     const span = document.createElement('span')
     span.innerText = spirit
     span.addEventListener('click', () => {
+
+fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit.name}`)
+.then((resp)=> resp.json())
+.then(data=> data.forEach(renderDrinksList))
+
+
         // take spirit create the url for fetching the list of drink with that spirit   
         //mouseover event over each spirit to change color / bold /whatever    
 
