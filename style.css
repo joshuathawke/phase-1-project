@@ -1,9 +1,17 @@
 #header {
     text-align: center;
-    background-color:crimson;
+    background-color: crimson;
     color: black;
     font-size: xx-large;
 }
-.alcohol-bar {
+
+#alcohol-bar {
     text-align: center;
+}
+
+
+#list {
+
+    column-count: 5;
+
 }
