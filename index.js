@@ -105,7 +105,7 @@ function renderDrinksList(drinksBySpirit) {
 ////JOSHUA
 function drinkDetails(drink) {
      // clears previous drink details
-    const detailsInfo = document.getElementById('cocktail-details');
+    const detailsInfo = document.getElementById('cocktail-details')
     detailsInfo.innerHTML = "";
 
     //run a fetch based on the ID and pull picture, ingredients, steps
