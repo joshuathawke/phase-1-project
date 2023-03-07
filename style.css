@@ -19,7 +19,7 @@ html {
 
 #header {
     text-align: center;
-    background: crimson;
+    background: #eff2f3;
     color: black;
     font-size: large;
     overflow: auto;
@@ -74,4 +74,8 @@ html {
     background-color: rgb(140, 243, 145);
     padding-top: 1vh;
     padding-bottom: 1vh;
+}
+
+#header-img {
+    height: 200px;
 }
