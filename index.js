@@ -83,11 +83,11 @@ function renderDrinksList(drinksBySpirit) {
         li.innerText = drink.strDrink
         ul.append(li)
 
-        li.addEventListener('click', () => {
-            fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`)
-                .then((resp) => resp.json())
-                .then(drinkDetails)
-        }) //end event listener
+        li.addEventListener('click', (e) => {
+            drinkDetails(drink.idDrink)
+
+        }) 
+        //end event listener
 
         mouseColor(li)
 
@@ -97,19 +97,35 @@ function renderDrinksList(drinksBySpirit) {
 
 ////JOSHUA
 function drinkDetails(drink) {
-
+    
     //run a fetch based on the ID and pull picture, ingredients, steps
-    fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${'idDrink'}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
         .then(drinkDetails => {
-            const detailsInfo = document.getElementById('details-info')
-            detailsInfo.innerText = `
-        <h2>${drink.name}</h2>
-        <h2>${drink.ingredients}</h2>
-        <h2>${drink.instructions}</h2>
-        <h2>${drink.glass}</h2>`
+            const detailsInfo = document.getElementById('cocktail-details')
+            const drinkImg = document.createElement('img')
+            const drinkName = document.createElement('h2')
+            const drinkIngredients = document.createElement('ul')
+            const drinkInstructions = document.createElement('p')
+            const drinkGlass = document.createElement('p')
+            drinkGlass.innerText = drinkDetails.drinks[0].strGlass
+            drinkName.innerText = drinkDetails.drinks[0].strDrink
+            drinkImg.src = drinkDetails.drinks[0].strDrinkThumb
+            console.log(drinkDetails)
+            drinkIngredients.innerText = drinkDetails.drinks[0].strIngredient1
+            drinkInstructions.innerText = drinkDetails.drinks[0].strInstructions
+            
+            detailsInfo.append(drinkName, drinkImg, drinkIngredients, drinkInstructions,drinkGlass)
+
+
+        //     detailsInfo.innerHTML = `
+        // <h2>${drinkDetails.drinks[0].strDrink}</h2>
+        // <h2>${drinkDetails.drinks[0].strIngredient1}</h2>
+        // <h2>${drinkDetails.drinks[0].strInstructions}</h2>
+        // <h2>${drinkDetails.drinks[0].strGlass}</h2>`
+
         })
-    render.drinkDetails()
+    // render.drinkDetails()
     //render in the div
 
 
