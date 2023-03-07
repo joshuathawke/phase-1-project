@@ -15,23 +15,23 @@ function init() {
     // add a 'submit' Event Listener to form#search-drinks and call searchDrink funciton with it's value
     drinkForm.addEventListener('submit', (e) => {
         e.preventDefault()
-
+        
         searchDrink(drinkForm.drink.value)
         drinkForm.reset();
-
+        
     })
 
 }//end init
 
 
 // take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
-function searchDrink(formValue) {
+function searchDrink( formValue) {
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
 
     // due to issues with the API when an empty submit is entered. 
     // checks if formValue is empty and if so changes value to null
-    if (formValue === '') {
+    if(formValue === ''){
         formValue = null
     }
 
@@ -99,13 +99,17 @@ function renderDrinksList(drinksBySpirit) {
 }  // end renderDrinksList
 
 function drinkDetails(drink) {
+     // clears previous drink details
+    const detailsInfo = document.getElementById('cocktail-details')
+    detailsInfo.innerHTML = "";
 
     //run a fetch based on the ID and pull picture, ingredients, steps
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
         .then(drinkDetails => {
 
-            detailsInfo.innerHTML = ''
+
+            
             const drinkImg = document.createElement('img')
             const drinkName = document.createElement('h2')
             const drinkIngredients = document.createElement('ul')
