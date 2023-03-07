@@ -1,53 +1,40 @@
 html {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-  }
-
-
-#grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: auto  1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    /* #header { grid-area: 1 / 1 / 2 / 3; } */
-    #alcohol-bar { grid-area: 1 / 1 / 2 / 6; }
-    #search-form { grid-area: 1 / 6 / 2 / 8; }
-    /* #cocktail-list { grid-area: 3 / 1 / 4 / 3; } */
-    /* #cocktail-details { grid-area: 4 / 1 / 5 / 3; } */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: auto;
+}
 
 #header {
     text-align: center;
-    background: #eff2f3;
+    /* background: crimson; */
     color: black;
     font-size: large;
     overflow: auto;
 
 }
 
+/* spirits list and search  */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
 /* https://css-tricks.com/snippets/css/a-guide-to-flexbox/#top-of-site */
 #alcohol-bar {
+    grid-area: 1 / 1 / 2 / 6;
     /* height: 15vh; */
     background: rgb(124, 177, 238);
-     display: flex;
+    display: flex;
     justify-content: space-around;
-    align-items: center; 
-    flex-wrap: wrap;
-    /* padding-bottom: 1vh; */
-}
-#search-form {
-    /* height: 15vh; */
-    background: rgb(211, 124, 238);
-     display: flex;
-    justify-content: space-around;
-    align-items: center; 
+    align-items: center;
     flex-wrap: wrap;
     /* padding-bottom: 1vh; */
 }
 
-
-#alcohol-bar span{
+/* buttons */
+#alcohol-bar span {
 
     padding-left: 1%;
     padding-right: 1%;
@@ -59,23 +46,44 @@ html {
     justify-content: center;
     /* font-size: 3vh; */
     align-items: center;
-    border-radius: 2em;  /*rounds the edges*/
+    border-radius: 2em;
+    /*rounds the edges*/
     border: 1px solid white;
 }
 
-#cocktail-list {
-    column-count: 4;
-    background-color: rgb(140, 140, 243);
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+#search-form {
+    /* height: 15vh; */
+    background: rgb(211, 124, 238);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    grid-area: 1 / 6 / 2 / 8;
+
+    /* padding-bottom: 1vh; */
 }
+
+/* cocktail list container */
+#cocktail-list {
+    background-color: rgb(140, 140, 243);
+    overflow: auto;
+}
+
+#cocktail-list #list {
+    column-count: 4;
+}
+
+/* cocktail container */
 #cocktail-details {
-    
+    overflow: auto;
     background-color: rgb(140, 243, 145);
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
 
-#header-img {
-    height: 200px;
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 200px;
 }
