@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', init)
 ////// BRIAN
 function init() {
 
-
+   
 
     //fetch spirits and iterate into renderSpirits
     spirits.liquors.forEach(renderSpirits)
@@ -35,12 +35,19 @@ function renderSpirits(spirit) {
             .then((resp) => resp.json())
             .then(renderDrinksList)
     }) //end event listener
+mouseColor(span)
 
-
-    //mouseover event over each spirit to change color / bold /whatever    
 
 } //end renderSpirits
 
+function mouseColor(item) {
+    item.addEventListener('mouseover', function handleMouseOver() {
+        item.style.color = 'red';
+    });
+    item.addEventListener('mouseout', function handleMouseOut() {
+        item.style.color = 'black';
+    });
+}
 function renderDrinksList(drinksBySpirit) {
     const ul = document.querySelector('#list')
     ul.innerHTML = ''
@@ -54,7 +61,9 @@ function renderDrinksList(drinksBySpirit) {
             fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`)
                 .then((resp) => resp.json())
                 .then(drinkDetails)
-        })
+        }) //end event listener
+
+        mouseColor(li)
 
     })
 }  // end renderDrinksList
