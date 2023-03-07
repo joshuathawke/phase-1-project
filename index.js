@@ -109,6 +109,8 @@ function drinkDetails(drink) {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
         .then(drinkDetails => {
+           
+            
             const detailsInfo = document.getElementById('cocktail-details')
             const drinkImg = document.createElement('img')
             const drinkName = document.createElement('h2')
@@ -120,7 +122,11 @@ function drinkDetails(drink) {
             for (let i = 1; i <= 15; i++) {
                 let ingredient = drinkDetails.drinks[0][`strIngredient${i}`];
                 if (ingredient) {
-                    ingredients += ingredient + ",";
+                    if (i === 1) {
+                        ingredients += ingredient;
+                    } else {
+                        ingredients += ", " + ingredient;
+                    }
                 } else {
                     break;
                 }
