@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', init)
 
 ////// BRIAN
 function init() {
+
     const drinkForm = document.querySelector("#search-drinks")
 
     //fetch spirits and iterate into renderSpirits  
     fetch('http://localhost:3000/liquors')
         .then(resp => resp.json())
         .then(data => data.forEach(renderSpirits))
+
 
     // add a 'submit' Event Listener to form#search-drinks and call searchDrink funciton with it's value
     drinkForm.addEventListener('submit', (e) => {
@@ -48,29 +50,48 @@ function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
     const span = document.createElement('span')
     span.innerText = spirit.name
+
+    bar.append(span)
+
+
+    // add eventlistener to populate a list of drinks per spirit & pass list iteratively to renderDrinksList
     span.addEventListener('click', () => {
 
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit.name}`)
             .then((resp) => resp.json())
-            .then(data => data.drinks.forEach(renderDrinksList))
+            .then(renderDrinksList)
+    }) //end event listener
+mouseColor(span)
 
-
-        // take spirit create the url for fetching the list of drink with that spirit   
-        //mouseover event over each spirit to change color / bold /whatever    
-
-        // pass fetch results (set of objects) pass it thorough renderDrinksList
-    })
-
-    bar.append(span)
 
 } //end renderSpirits
 
+function mouseColor(item) {
+    item.addEventListener('mouseover', function handleMouseOver() {
+        item.style.color = 'red';
+    });
+    item.addEventListener('mouseout', function handleMouseOut() {
+        item.style.color = 'black';
+    });
+}
 function renderDrinksList(drinksBySpirit) {
+    const ul = document.querySelector('#list')
+    ul.innerHTML = ''
 
-    //iterate and inserts list into list to be rendered in the div
+    drinksBySpirit.drinks.forEach(drink => {
+        const li = document.createElement('li')
+        li.innerText = drink.strDrink
+        ul.append(li)
 
-    // to each list item add event listener to pass it to drinkDetails
+        li.addEventListener('click', () => {
+            fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink.idDrink}`)
+                .then((resp) => resp.json())
+                .then(drinkDetails)
+        }) //end event listener
 
+        mouseColor(li)
+
+    })
 }  // end renderDrinksList
 
 
