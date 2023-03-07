@@ -38,7 +38,7 @@ function searchDrink(formValue) {
             renderDrinksList(drinkObj)
         } else {
             console.log(data.drinks)
-            data.drinks.forEach(renderDrinksList)
+            renderDrinksList(data)
         }
     })
 
