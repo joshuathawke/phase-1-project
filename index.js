@@ -90,7 +90,7 @@ function renderDrinksList(drinksBySpirit) {
         li.addEventListener('click', (e) => {
             drinkDetails(drink.idDrink)
 
-        }) 
+        })
         //end event listener
 
         mouseColor(li)
@@ -101,7 +101,7 @@ function renderDrinksList(drinksBySpirit) {
 
 ////JOSHUA
 function drinkDetails(drink) {
-    
+
     //run a fetch based on the ID and pull picture, ingredients, steps
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
@@ -112,21 +112,26 @@ function drinkDetails(drink) {
             const drinkIngredients = document.createElement('ul')
             const drinkInstructions = document.createElement('p')
             const drinkGlass = document.createElement('p')
+
+            let ingredients = "";
+            for (let i = 1; i <= 15; i++) {
+                let ingredient = drinkDetails.drinks[0][`strIngredient${i}`];
+                if (ingredient) {
+                    ingredients += ingredient + ",";
+                } else {
+                    break;
+                }
+            }
+            
             drinkGlass.innerText = drinkDetails.drinks[0].strGlass
             drinkName.innerText = drinkDetails.drinks[0].strDrink
             drinkImg.src = drinkDetails.drinks[0].strDrinkThumb
-            console.log(drinkDetails)
-            drinkIngredients.innerText = drinkDetails.drinks[0].strIngredient1
             drinkInstructions.innerText = drinkDetails.drinks[0].strInstructions
+            drinkIngredients.innerText = ingredients;
             
-            detailsInfo.append(drinkName, drinkImg, drinkIngredients, drinkInstructions,drinkGlass)
+            detailsInfo.append(drinkName, drinkImg, drinkIngredients, drinkInstructions, drinkGlass)
 
 
-        //     detailsInfo.innerHTML = `
-        // <h2>${drinkDetails.drinks[0].strDrink}</h2>
-        // <h2>${drinkDetails.drinks[0].strIngredient1}</h2>
-        // <h2>${drinkDetails.drinks[0].strInstructions}</h2>
-        // <h2>${drinkDetails.drinks[0].strGlass}</h2>`
 
         })
     // render.drinkDetails()
