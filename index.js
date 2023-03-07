@@ -26,9 +26,6 @@ function init() {
 
 // take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
 function searchDrink( formValue) {
-    const resultMsg = document.getElementById('result-msg')
-    resultMsg.textContent = ''
-
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
 
@@ -46,7 +43,7 @@ function searchDrink( formValue) {
                 const ul = document.querySelector('#list')
                 ul.innerHTML = ''
 
-                resultMsg.textContent = "Sorry, we didn't find any results matching this search."
+                window.alert("Sorry, we didn't find any results matching this search.")
             } else {
                 renderDrinksList(data)
             }
