@@ -57,6 +57,7 @@ function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
     const span = document.createElement('span')
     span.innerText = spirit.name
+    span.className = 'spirit-span'
 
     bar.append(span)
 

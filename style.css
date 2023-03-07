@@ -5,7 +5,7 @@ html {
 
 #header {
     text-align: center;
-    /* background: crimson; */
+    background: #EFF2F3;
     color: black;
     font-size: large;
     overflow: auto;
@@ -25,7 +25,8 @@ html {
 #alcohol-bar {
     grid-area: 1 / 1 / 2 / 6;
     /* height: 15vh; */
-    background: rgb(124, 177, 238);
+    background: rgb(239,242,243);
+    background: linear-gradient(90deg, rgba(239,242,243,1) 0%, rgba(178,210,231,1) 30%, rgba(156,198,226,1) 75%, rgba(57,145,205,1) 100%);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -36,24 +37,25 @@ html {
 /* buttons */
 #alcohol-bar span {
 
+    
     padding-left: 1%;
     padding-right: 1%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     height: fit-content;
-    width: fit-content;
+    width:  4em;
     display: flex;
     justify-content: center;
     /* font-size: 3vh; */
     align-items: center;
     border-radius: 2em;
     /*rounds the edges*/
-    border: 1px solid white;
+    border: 1px solid  #137dc5;
 }
 
 #search-form {
     /* height: 15vh; */
-    background: rgb(211, 124, 238);
+    background: #3991cd;
     display: flex;
     justify-content: space-around;
     align-items: center;
