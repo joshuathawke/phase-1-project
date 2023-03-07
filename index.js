@@ -22,26 +22,29 @@ function init() {
 
 
 // take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
-function searchDrink(formValue) {
+function searchDrink( formValue) {
+    const resultMsg = document.getElementById('result-msg')
+    resultMsg.textContent = ''
+
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
+
+    // due to issues with the API when an empty submit is entered. 
+    // checks if formValue is empty and if so changes value to null
+    if(formValue === ''){
+        formValue = null
+    }
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${formValue}`)
         .then(resp => resp.json())
         .then(data => {
             if (data.drinks === null) {
-                const drinkObj = {
-                    drinks: [
-                        {
-                            strDrink: "We're Sorry, We Were Not Able To Find A Match",
-                            idDrink: null
-                        }]
-                };
-                console.log(drinkObj)
-                renderDrinksList(drinkObj)
-            } else {
-                console.log(data.drinks)
+                // clearing the drink list so the old results don't remain if a new search returns no results
+                const ul = document.querySelector('#list')
+                ul.innerHTML = ''
 
+                resultMsg.textContent = "Sorry, we didn't find any results matching this search."
+            } else {
                 renderDrinksList(data)
             }
         })
