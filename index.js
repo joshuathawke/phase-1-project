@@ -15,7 +15,10 @@ function init() {
     // add a 'submit' Event Listener to form#search-drinks and call searchDrink funciton with it's value
     drinkForm.addEventListener('submit', (e) => {
         e.preventDefault()
+        
         searchDrink(drinkForm.drink.value)
+        drinkForm.reset();
+        
     })
 
 }//end init
