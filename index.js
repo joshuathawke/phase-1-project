@@ -25,22 +25,26 @@ function init() {
 function searchDrink(formValue) {
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
-    
+
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${formValue}`)
-    .then(resp => resp.json())
-    .then(data => { 
-        if(data.drinks === null){
-            const drinkObj = {
-                strDrink: "We're Sorry, We Were Not Able To Find A Match",
-                idDrink: null
-            };
-            console.log(drinkObj)
-            renderDrinksList(drinkObj)
-        } else {
-            console.log(data.drinks)
-            renderDrinksList(data)
-        }
-    })
+        .then(resp => resp.json())
+        .then(data => {
+            if (data.drinks === null) {
+                const drinkObj = {
+                    drinks: [
+                        {
+                            strDrink: "We're Sorry, We Were Not Able To Find A Match",
+                            idDrink: null
+                        }]
+                };
+                console.log(drinkObj)
+                renderDrinksList(drinkObj)
+            } else {
+                console.log(data.drinks)
+
+                renderDrinksList(data)
+            }
+        })
 
 } //end searchDrink
 
@@ -61,7 +65,7 @@ function renderSpirits(spirit) {
             .then((resp) => resp.json())
             .then(renderDrinksList)
     }) //end event listener
-mouseColor(span)
+    mouseColor(span)
 
 
 } //end renderSpirits
