@@ -35,7 +35,6 @@ html {
 
 /* buttons */
 #alcohol-bar span {
-
     padding-left: 1%;
     padding-right: 1%;
     padding-top: 0.5%;
@@ -74,16 +73,42 @@ html {
 }
 
 /* cocktail container */
-#cocktail-details {
+#cocktail-card {
     overflow: auto;
-    background-color: rgb(140, 243, 145);
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+    background-color: whitesmoke;
+    border: solid;
+    border-color: gray;
+    text-align: center;
+    width: 45%;
+    margin: 0 auto;
+    box-shadow:2px 2px 2px black;
+
+}
+
+#cocktail-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+    /* justify-items: center; */
+}
+
+#drink-image {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+#drink-recipe {
+    grid-area: 1 / 2 / 2 / 3;
+    margin-right: 15px;
+    text-align: left;
 }
 
 #cocktail-details img {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 5px;
+    padding: 5px; */
     width: 200px;
+
 }
