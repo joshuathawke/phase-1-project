@@ -145,3 +145,7 @@ html {
 
     height: 8em;
 }
+
+ul {
+    list-style-type: none;
+  }
