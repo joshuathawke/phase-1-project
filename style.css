@@ -91,3 +91,7 @@ html {
     padding: 5px;
     width: 200px;
 }
+/* remove bullet points */
+ul {
+    list-style-type: none;
+  }
