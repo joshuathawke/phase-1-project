@@ -1,12 +1,14 @@
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: auto;
+    background-color:  #EFF2F3;
 }
 
 #header {
     text-align: center;
     background: #EFF2F3;
     color: black;
+    padding-bottom: 2vh;
     font-size: large;
     overflow: auto;
 
@@ -56,6 +58,9 @@ html {
 #search-form {
     /* height: 15vh; */
     background: #3991cd;
+    border-left: 1px solid #137dc5;
+    color:#274797;
+    border-top-right-radius: 1.5em;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -63,6 +68,19 @@ html {
     grid-area: 1 / 6 / 2 / 8;
 
     /* padding-bottom: 1vh; */
+}
+
+#search-form h4{
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 2px #1673bd;
+}
+
+.submit{
+    margin-top: 2vh;
+    border: 1px solid  #EFF2F3;
+    border-radius: 1em;
+    background-color: #1e63af;
+    color:  #EFF2F3;
 }
 
 /* cocktail list container */
@@ -88,4 +106,9 @@ html {
     border-radius: 4px;
     padding: 5px;
     width: 200px;
+}
+
+#header-img {
+
+    height: 8em;
 }
