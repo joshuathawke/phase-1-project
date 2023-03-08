@@ -85,7 +85,9 @@ html {
 
 /* cocktail list container */
 #cocktail-list {
-    background-color: rgb(140, 140, 243);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #3991cd;
     overflow: auto;
 }
 
