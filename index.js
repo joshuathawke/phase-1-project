@@ -15,23 +15,23 @@ function init() {
     // add a 'submit' Event Listener to form#search-drinks and call searchDrink funciton with it's value
     drinkForm.addEventListener('submit', (e) => {
         e.preventDefault()
-        
+
         searchDrink(drinkForm.drink.value)
         drinkForm.reset();
-        
+
     })
 
 }//end init
 
 
 // take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
-function searchDrink( formValue) {
+function searchDrink(formValue) {
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
 
     // due to issues with the API when an empty submit is entered. 
     // checks if formValue is empty and if so changes value to null
-    if(formValue === ''){
+    if (formValue === '') {
         formValue = null
     }
 
@@ -42,7 +42,11 @@ function searchDrink( formValue) {
                 // clearing the drink list so the old results don't remain if a new search returns no results
                 const ul = document.querySelector('#list')
                 ul.innerHTML = ''
-                detailsInfo.innerHTML = ''
+                ////   detailsInfo.innerHTML = ''
+                drinkName.innerHTML = ''
+                imageDiv.innerHTML = ''
+                recipeDiv.innerHTML = ''
+
                 window.alert("Sorry, we didn't find any results matching this search.")
             } else {
                 renderDrinksList(data)
@@ -50,8 +54,10 @@ function searchDrink( formValue) {
         })
 
 } //end searchDrink
-
-const detailsInfo = document.getElementById('cocktail-details')
+const drinkName = document.getElementById('drink-name')
+const imageDiv = document.getElementById('drink-image')
+const recipeDiv = document.getElementById('drink-recipe')
+// const detailsInfo = document.getElementById('cocktail')
 
 function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
@@ -84,7 +90,11 @@ function mouseColor(item) {
 function renderDrinksList(drinksBySpirit) {
     const ul = document.querySelector('#list')
     ul.innerHTML = ''
-    detailsInfo.innerHTML = ''
+    ////  detailsInfo.innerHTML = ''
+    drinkName.innerHTML = ''
+    imageDiv.innerHTML = ''
+    recipeDiv.innerHTML = ''
+
     drinksBySpirit.drinks.forEach(drink => {
         const li = document.createElement('li')
         li.innerText = drink.strDrink
@@ -99,19 +109,19 @@ function renderDrinksList(drinksBySpirit) {
 }  // end renderDrinksList
 
 function drinkDetails(drink) {
-     // clears previous drink details
-    const detailsInfo = document.getElementById('cocktail-details')
-    detailsInfo.innerHTML = "";
-
+    // clears previous drink details
+    ////  detailsInfo.innerHTML = "";
+    drinkName.innerHTML = ''
+    imageDiv.innerHTML = ''
+    recipeDiv.innerHTML = ''
     //run a fetch based on the ID and pull picture, ingredients, steps
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
         .then(drinkDetails => {
 
+      
 
-            
             const drinkImg = document.createElement('img')
-            const drinkName = document.createElement('h2')
             const drinkIngredients = document.createElement('ul')
             const drinkInstructions = document.createElement('p')
             const drinkGlass = document.createElement('p')
@@ -139,7 +149,9 @@ function drinkDetails(drink) {
             drinkName.innerText = drinkDetails.drinks[0].strDrink
             drinkImg.src = drinkDetails.drinks[0].strDrinkThumb
             drinkInstructions.innerText = drinkDetails.drinks[0].strInstructions
-            detailsInfo.append(drinkName, drinkImg, drinkIngredients, drinkInstructions, drinkGlass)
+
+            recipeDiv.append(drinkIngredients, drinkInstructions)
+            imageDiv.append(drinkImg, drinkGlass)
         })
 
 
