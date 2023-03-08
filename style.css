@@ -1,12 +1,14 @@
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: auto;
+    background-color:  #EFF2F3;
 }
 
 #header {
     text-align: center;
-    /* background: crimson; */
+    background: #EFF2F3;
     color: black;
+    padding-bottom: 2vh;
     font-size: large;
     overflow: auto;
 
@@ -25,7 +27,8 @@ html {
 #alcohol-bar {
     grid-area: 1 / 1 / 2 / 6;
     /* height: 15vh; */
-    background: rgb(124, 177, 238);
+    background: rgb(239,242,243);
+    background: linear-gradient(90deg, rgba(239,242,243,1) 0%, rgba(178,210,231,1) 30%, rgba(156,198,226,1) 75%, rgba(57,145,205,1) 100%);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -40,19 +43,22 @@ html {
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     height: fit-content;
-    width: fit-content;
+    width:  4em;
     display: flex;
     justify-content: center;
     /* font-size: 3vh; */
     align-items: center;
     border-radius: 2em;
     /*rounds the edges*/
-    border: 1px solid white;
+    border: 1px solid  #137dc5;
 }
 
 #search-form {
     /* height: 15vh; */
-    background: rgb(211, 124, 238);
+    background: #3991cd;
+    border-left: 1px solid #137dc5;
+    color:#274797;
+    border-top-right-radius: 1.5em;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -62,9 +68,24 @@ html {
     /* padding-bottom: 1vh; */
 }
 
+#search-form h4{
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 2px #1673bd;
+}
+
+.submit{
+    margin-top: 2vh;
+    border: 1px solid  #EFF2F3;
+    border-radius: 1em;
+    background-color: #1e63af;
+    color:  #EFF2F3;
+}
+
 /* cocktail list container */
 #cocktail-list {
-    background-color: rgb(140, 140, 243);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #3991cd;
     overflow: auto;
 }
 
@@ -111,4 +132,9 @@ html {
     padding: 5px; */
     width: 200px;
 
+}
+
+#header-img {
+
+    height: 8em;
 }
