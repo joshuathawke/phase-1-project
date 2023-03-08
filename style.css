@@ -102,15 +102,17 @@ html {
     overflow: auto;
     background-color: rgba(255, 255, 255, 0.952);
     border: solid;
-    border-color: gray;
+    border-color: rgb(155, 155, 155);
     text-align: center;
-    width: 45%;
+    width: 50%;
     min-height: 45%;
     margin: 0 auto;
     margin-bottom: 6%;
     margin-top: 3%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: none;
+    padding: 15px 0 15px 0;
+
 
 }
 
@@ -127,7 +129,7 @@ html {
 
 #drink-recipe {
     grid-area: 1 / 2 / 2 / 3;
-    margin-right: 15px;
+    margin-right: 10%;
     text-align: left;   
 }
 
@@ -161,6 +163,6 @@ html {
     border: 1px  solid  whitesmoke;
   }
   
-  #myBtn:hover {
+  #topBtn:hover {
     background-color: #555;
   }
