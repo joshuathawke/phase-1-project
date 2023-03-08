@@ -24,6 +24,7 @@ function init() {
 }//end init
 
 
+
 // take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
 function searchDrink(formValue) {
     formValue = formValue.trim()
@@ -46,6 +47,8 @@ function searchDrink(formValue) {
                 drinkName.innerHTML = ''
                 imageDiv.innerHTML = ''
                 recipeDiv.innerHTML = ''
+                cardDiv.style.display = 'none'
+                listDiv.style.display = 'none'
 
                 window.alert("Sorry, we didn't find any results matching this search.")
             } else {
@@ -57,7 +60,10 @@ function searchDrink(formValue) {
 const drinkName = document.getElementById('drink-name')
 const imageDiv = document.getElementById('drink-image')
 const recipeDiv = document.getElementById('drink-recipe')
+const listDiv = document.querySelector('#cocktail-list')
+const cardDiv = document.querySelector('#cocktail-card')
 // const detailsInfo = document.getElementById('cocktail')
+
 
 function renderSpirits(spirit) {
     const bar = document.querySelector('#alcohol-bar')
@@ -80,16 +86,28 @@ function renderSpirits(spirit) {
 
 } //end renderSpirits
 
+
 function mouseColor(item) {
     item.addEventListener('mouseover', function handleMouseOver() {
-        item.style.color = 'red';
+        item.style.color = "#202C68";
+        item.style.fontWeight = 'bold';
+        //item.style.borderStyle = "groove";
+        //item.style.borderWidth = "thick";
+        
+        
     });
     item.addEventListener('mouseout', function handleMouseOut() {
         item.style.color = 'black';
+        item.style.fontWeight = 'normal'
+       // item.style.borderStyle = "solid";
     });
 }
+
+
 function renderDrinksList(drinksBySpirit) {
     const ul = document.querySelector('#list')
+    listDiv.style.display = "block"
+    cardDiv.style.display = "none"
     ul.innerHTML = ''
     ////  detailsInfo.innerHTML = ''
     drinkName.innerHTML = ''
@@ -108,6 +126,7 @@ function renderDrinksList(drinksBySpirit) {
 
     })
 }  // end renderDrinksList
+
 
 function drinkDetails(drink) {
     // clears previous drink details
@@ -153,6 +172,7 @@ function drinkDetails(drink) {
 
             recipeDiv.append(drinkIngredients, drinkInstructions)
             imageDiv.append(drinkImg, drinkGlass)
+            cardDiv.style.display = "block";
         })
 
 
