@@ -30,7 +30,7 @@ html {
     background: rgb(239,242,243);
     background: linear-gradient(90deg, rgba(239,242,243,1) 0%, rgba(178,210,231,1) 30%, rgba(156,198,226,1) 75%, rgba(57,145,205,1) 100%);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     /* padding-bottom: 1vh; */
@@ -52,7 +52,6 @@ html {
     border-style: groove;
     /*rounds the edges*/
     border: 2px groove  #137dc5;
-
 }
 
 #search-form {
@@ -99,19 +98,19 @@ html {
 
 /* cocktail container */
 #cocktail-card {
-    overflow: auto;
+    /* overflow: auto; */
     background-color: rgba(255, 255, 255, 0.952);
     border: solid;
     border-color: rgb(155, 155, 155);
     text-align: center;
-    width: 50%;
-    min-height: 45%;
+    width: 60%;
+    /* min-height: 45%; */
     margin: 0 auto;
     margin-bottom: 6%;
     margin-top: 3%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: none;
-    padding: 15px 0 15px 0;
+    padding: 10px 0 15px 0;
 
 
 }
@@ -123,10 +122,18 @@ html {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     /* justify-items: center; */
 }
 
+#drink-name {
+margin-bottom: 3%;
+margin-top: 3%;
+font-size: 1.7em;
+text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+
+}
 #drink-recipe {
     grid-area: 1 / 2 / 2 / 3;
     margin-right: 10%;
@@ -139,6 +146,7 @@ html {
 
 #cocktail-details img {
     width: 70%;
+    /* height: 70%; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -164,7 +172,7 @@ html {
   }
   
   #topBtn:hover {
-    background-color: #555;
+    background-color: #7e7e7e;
   }
 
 ul {
@@ -173,4 +181,8 @@ ul {
 
   div {
     cursor: pointer;
+}
+
+li:not(:last-child) {
+    margin-bottom: 3px;
 }
