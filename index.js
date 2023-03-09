@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', init)
 
 
-////// BRIAN
 function init() {
 
     const drinkForm = document.querySelector("#search-drinks")
@@ -12,7 +11,7 @@ function init() {
         .then(data => data.forEach(renderSpirits))
 
 
-    // add a 'submit' Event Listener to form#search-drinks and call searchDrink funciton with it's value
+    // add a 'submit' Event Listener to form#search-drinks and call searchDrink function with it's value
     drinkForm.addEventListener('submit', (e) => {
         e.preventDefault()
 
@@ -21,11 +20,28 @@ function init() {
 
     })
 
+
+    // Get the button
+    let topButton = document.getElementById("topBtn");
+    // When the user scrolls down 5px from the top of the document, show the button
+    window.onscroll = () => {
+        if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+            topButton.style.display = "block";
+        } else {
+            topButton.style.display = "none";
+        }
+    }
+    topButton.addEventListener('click', () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    })
+
+
 }//end init
 
 
 
-// take value submited in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
+// take value submitted in form#search-drinks > create the url for the search  > fetch that search > call renderDrinkList on resp Objects
 function searchDrink(formValue) {
     formValue = formValue.trim()
     formValue = formValue.split(' ').join('_')
@@ -93,13 +109,13 @@ function mouseColor(item) {
         item.style.fontWeight = 'bold';
         //item.style.borderStyle = "groove";
         //item.style.borderWidth = "thick";
-        
-        
+
+
     });
     item.addEventListener('mouseout', function handleMouseOut() {
         item.style.color = 'black';
         item.style.fontWeight = 'normal'
-       // item.style.borderStyle = "solid";
+        // item.style.borderStyle = "solid";
     });
 }
 
@@ -131,16 +147,17 @@ function renderDrinksList(drinksBySpirit) {
 function drinkDetails(drink) {
     // clears previous drink details
     ////  detailsInfo.innerHTML = "";
+    
     drinkName.innerHTML = ''
     imageDiv.innerHTML = ''
     recipeDiv.innerHTML = ''
+  
     //run a fetch based on the ID and pull picture, ingredients, steps
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drink}`)
         .then(resp => resp.json())
         .then(drinkDetails => {
 
-      
-
+         
             const drinkImg = document.createElement('img')
             const drinkIngredients = document.createElement('ul')
             const drinkInstructions = document.createElement('p')
@@ -173,9 +190,9 @@ function drinkDetails(drink) {
             recipeDiv.append(drinkIngredients, drinkInstructions)
             imageDiv.append(drinkImg, drinkGlass)
             cardDiv.style.display = "block";
+            
+            cardDiv.scrollIntoView()
         })
-
-
 } //end drinkDetails
 
 
