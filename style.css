@@ -170,3 +170,7 @@ html {
 ul {
     list-style-type: none;
   }
+
+  div {
+    cursor: pointer;
+}
