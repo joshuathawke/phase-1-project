@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', init)
-
+dblClick = true; 
 
 function init() {
 
@@ -136,7 +136,10 @@ function renderDrinksList(drinksBySpirit) {
         ul.append(li)
 
         li.addEventListener('click', () => {
+            if(dblClick){
+                dblClick = !dblClick;
             drinkDetails(drink.idDrink)
+            }
         })        //end event listener
         mouseColor(li)
 
@@ -190,7 +193,7 @@ function drinkDetails(drink) {
             recipeDiv.append(drinkIngredients, drinkInstructions)
             imageDiv.append(drinkImg, drinkGlass)
             cardDiv.style.display = "block";
-            
+            dblClick = !dblClick;
             cardDiv.scrollIntoView()
         })
 } //end drinkDetails
